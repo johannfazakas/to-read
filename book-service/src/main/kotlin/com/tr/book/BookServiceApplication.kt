@@ -1,4 +1,4 @@
-package com.sandbox.book
+package com.tr.book
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

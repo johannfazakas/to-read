@@ -7,9 +7,10 @@ plugins {
 	kotlin("jvm") version "1.6.10"
 	kotlin("plugin.spring") version "1.6.10"
 	kotlin("plugin.jpa") version "1.6.10"
+	id("org.jetbrains.kotlin.plugin.noarg") version "1.6.10"
 }
 
-group = "com.sandbox"
+group = "com.tr"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
@@ -24,6 +25,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+noArg {
+	annotation("javax.persistence.Entity")
+	invokeInitializers = true
 }
 
 tasks.withType<KotlinCompile> {

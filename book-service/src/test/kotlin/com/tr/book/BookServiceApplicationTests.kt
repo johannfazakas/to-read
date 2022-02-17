@@ -1,4 +1,4 @@
-package com.sandbox.book
+package com.tr.book
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
