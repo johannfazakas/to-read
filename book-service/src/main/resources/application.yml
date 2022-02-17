@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  sql:
+    init:
+      platform: postgres
+  datasource:
+    url: jdbc:postgresql://postgres-db:5432/postgres
+    username: postgres
+    password: admin

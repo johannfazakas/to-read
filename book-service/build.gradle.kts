@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
 	id("org.springframework.boot") version "2.6.3"
@@ -17,10 +18,11 @@ repositories {
 }
 
 dependencies {
-//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-//	runtimeOnly("org.postgresql:postgresql")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -31,16 +33,8 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
-tasks.withType<Jar> {
-	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-	manifest {
-		attributes["Main-Class"] = "com.sandbox.book.BookServiceApplicationKt"
-	}
-	from(configurations.runtimeClasspath.get()
-		.filter { it.name.endsWith("jar") }
-		.map { zipTree(it) }
-	)
-	archiveFileName.set("book-service.jar")
+tasks.getByName<BootJar>("bootJar") {
+	this.archiveFileName.set("book-service.jar")
 }
 
 tasks.withType<Test> {

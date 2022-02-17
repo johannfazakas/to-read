@@ -3,7 +3,7 @@ USER gradle
 WORKDIR /app
 COPY --chown=gradle:gradle build.gradle.kts .
 COPY --chown=gradle:gradle src src
-RUN gradle build
+RUN gradle bootJar
 
 FROM openjdk:17-slim
 WORKDIR /app
