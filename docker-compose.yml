@@ -1,4 +1,4 @@
-version: '2'
+version: '3.7'
 
 services:
   book-service:
@@ -11,6 +11,7 @@ services:
       - "8015:8080"
     networks:
       - to-read-network
+
   postgres-db:
     image: 'postgres:14.1-alpine'
     container_name: postgres-db
@@ -21,7 +22,13 @@ services:
       - "5432:5432"
     networks:
       - to-read-network
+    volumes:
+      - db:/var/lib/postgresql/data
 
 networks:
   to-read-network:
     driver: bridge
+
+volumes:
+  db:
+    driver: local
