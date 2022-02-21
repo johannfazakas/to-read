@@ -1,18 +1,19 @@
 package com.tr.book.api
 
-import com.tr.book.domain.Book
+import com.tr.book.persistence.AuthorRepository
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/book-service/v1/books")
-class BookController(
+@RequestMapping("/book-service/v1/authors")
+class AuthorController(
+    private val authorRepository: AuthorRepository
 ) {
     @GetMapping
-    fun getBooks(): List<Book> = TODO()
+    fun findBooks() = authorRepository.findAll()
 
     @PostMapping
-    fun saveBook(): Int = TODO()
+    fun createBook() = authorRepository.create("First", "Last")
 }

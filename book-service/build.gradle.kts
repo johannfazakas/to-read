@@ -9,13 +9,11 @@ buildscript {
 	}
 }
 
-
 plugins {
 	id("org.springframework.boot") version "2.6.3"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.6.10"
 	kotlin("plugin.spring") version "1.6.10"
-	kotlin("plugin.jpa") version "1.6.10"
 	id("org.jetbrains.kotlin.plugin.noarg") version "1.6.10"
 	id("nu.studer.jooq") version "7.1.1"
 }
@@ -30,14 +28,15 @@ repositories {
 
 dependencies {
 	// spring
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-jooq")
 	// kotlin
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	// postgresql
 	runtimeOnly("org.postgresql:postgresql")
-	// jooq
+	// jackson
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	// jooq generator
 	compileOnly("org.jooq:jooq:3.16.4")
 	compileOnly("org.jooq:jooq-meta:3.16.3")
 	compileOnly("org.jooq:jooq-codegen:3.16.3")

@@ -1,14 +1,8 @@
 spring:
-  jpa:
-    database: POSTGRESQL
-    show-sql: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: update
-  sql:
-    init:
-      platform: postgres
   datasource:
-    url: jdbc:postgresql://postgres-db:5432/postgres
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres-db:5432/books
     username: postgres
     password: admin
+  jooq:
+    sql-dialect: POSTGRES
